@@ -1,12 +1,12 @@
-const tailwindcss = require('tailwindcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
+const postcssNested = require('postcss-nested');
 
 const isProdEnv = process.env.NODE_ENV !== 'development';
 
 const config = {
 	plugins: [
-		tailwindcss(),
+		postcssNested(),
 		autoprefixer(),
 		isProdEnv &&
 			cssnano({

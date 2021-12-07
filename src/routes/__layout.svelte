@@ -1,11 +1,23 @@
 <script lang="ts">
+	// import '@fontsource/roboto';
+	// import '@fontsource/roboto/500.css';
+	// import '@fontsource/roboto/700.css';
+	import '@fontsource/poppins/600.css';
+	import 'modern-normalize';
+
 	import '../app.postcss';
 </script>
 
-<header>Hello</header>
+<header class="layout__header">Hello</header>
 
 <main>
 	<slot />
 </main>
 
-<footer>world</footer>
+<style lang="postcss">
+	.layout {
+		&__header {
+			height: 125px;
+		}
+	}
+</style>
