@@ -20,6 +20,6 @@
 	export let movies: MovieListResponse;
 </script>
 
-<MoviesList movies={movies.results} />
-
 <Meta />
+
+<MoviesList movies={movies.results} />

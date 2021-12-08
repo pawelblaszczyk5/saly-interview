@@ -23,6 +23,7 @@
 	import MovieGenres from '$lib/components/MovieGenres.svelte';
 	import MovieRating from '$lib/components/MovieRating.svelte';
 	import placeholderImage from '$lib/assets/placeholder-image.jpg';
+	import Meta from '$lib/components/Meta.svelte';
 
 	export let credits: MovieCreditsResponse;
 	export let details: MovieDetailsResponse;
@@ -49,6 +50,8 @@
 		role: job,
 	}));
 </script>
+
+<Meta title={details.title} description={details.overview} />
 
 <section class="movie">
 	<article class="movie__info">
