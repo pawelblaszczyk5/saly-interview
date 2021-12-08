@@ -3,15 +3,16 @@ import type { SessionResponse } from '$lib/model/sessionResponse';
 import type { SessionWithLoginResponse } from '$lib/model/sessionWithLoginResponse';
 
 import { PARAMS_WITH_API_KEY } from '$lib/constants/paramsWithApiKey';
+import { API_URL_PREFIX } from '$lib/constants/apiUrlPrefix';
 
 export const createSession = async (): Promise<string> => {
 	const requestTokenResponse: RequestTokenResponse = await (
-		await fetch(`https://api.themoviedb.org/3/authentication/token/new?${PARAMS_WITH_API_KEY}`)
+		await fetch(`${API_URL_PREFIX}authentication/token/new?${PARAMS_WITH_API_KEY}`)
 	).json();
 
 	const sessionWithLoginResponse: SessionWithLoginResponse = await (
 		await fetch(
-			`https://api.themoviedb.org/3/authentication/token/validate_with_login?${PARAMS_WITH_API_KEY}`,
+			`${API_URL_PREFIX}authentication/token/validate_with_login?${PARAMS_WITH_API_KEY}`,
 			{
 				body: JSON.stringify({
 					username: import.meta.env.VITE_TMDB_USERNAME,
@@ -27,7 +28,7 @@ export const createSession = async (): Promise<string> => {
 	).json();
 
 	const sessionResponse: SessionResponse = await (
-		await fetch(`https://api.themoviedb.org/3/authentication/session/new?${PARAMS_WITH_API_KEY}`, {
+		await fetch(`${API_URL_PREFIX}authentication/session/new?${PARAMS_WITH_API_KEY}`, {
 			body: JSON.stringify({
 				request_token: sessionWithLoginResponse.request_token,
 			}),
