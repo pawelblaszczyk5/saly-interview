@@ -1,16 +1,12 @@
 <script lang="ts" context="module">
 	export const load: Load = async ({ fetch }) => {
-		const response = await fetch('/api/lists/exists');
+		const anyListCreated: boolean = await (await fetch('/api/lists/exists')).json();
 
-		if (response.ok) {
-			const responseBody = await response.json();
-
-			return {
-				props: {
-					anyListCreated: responseBody,
-				},
-			};
-		}
+		return {
+			props: {
+				anyListCreated,
+			},
+		};
 	};
 </script>
 
