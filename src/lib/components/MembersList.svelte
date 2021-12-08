@@ -35,22 +35,22 @@
 			flex-direction: column;
 			align-items: center;
 			gap: clamp(0.5rem, 2vw - 0.25rem, 0.75rem);
-			width: 50%;
+			width: calc(50% - 1 / 2 * clamp(0.5rem, 3vw - 0.25rem, 1rem));
 			flex-shrink: 0;
 			box-shadow: var(--secondary-box-shadow);
 			padding: 0.5rem clamp(0.5rem, 5vw - 0.75rem, 2.188rem);
 			text-align: center;
 
 			@media screen and (min-width: 768px) {
-				width: 33%;
+				width: calc(100% / 3 - 2 / 3 * clamp(0.5rem, 3vw - 0.25rem, 1rem));
 			}
 
 			@media screen and (min-width: 1280px) {
-				width: 25%;
+				width: calc(25% - 3 / 4 * clamp(0.5rem, 3vw - 0.25rem, 1rem));
 			}
 
 			@media screen and (min-width: 1536px) {
-				width: 20%;
+				width: calc(20% - 4 / 5 * clamp(0.5rem, 3vw - 0.25rem, 1rem));
 			}
 			/* TODO - TAKE GAP INTO ACCOUNT IN WIDTH */
 		}
