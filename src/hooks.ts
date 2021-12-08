@@ -2,9 +2,9 @@ import type { Handle } from '@sveltejs/kit';
 
 import { parseCookies } from '$lib/helpers/parseCookies';
 import { createSession } from '$lib/helpers/createSession';
+import { SESSION_COOKIE_NAME } from '$lib/constants/sessionCookieName';
 
-const SESSION_COOKIE_NAME = 'SESSION_ID';
-const SESSION_COOKIE_EXPIRY_TIME = 7_200;
+const SESSION_COOKIE_EXPIRY_TIME = 7_140;
 
 export const handle: Handle = async ({ request, resolve }) => {
 	const response = await resolve(request);
