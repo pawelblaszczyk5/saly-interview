@@ -15,8 +15,6 @@ export const get: RequestHandler = async (request) => {
 		).json(),
 	]);
 
-	console.log(details);
-
 	return {
 		body: {
 			details,
