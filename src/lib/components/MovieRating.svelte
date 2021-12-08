@@ -11,6 +11,7 @@
 	.movie-rating {
 		font-size: clamp(0.75rem, 1vw + 0.5rem, 1rem);
 		font-weight: 500;
+		break-word: break-all;
 
 		&__counter {
 			font-weight: 400;

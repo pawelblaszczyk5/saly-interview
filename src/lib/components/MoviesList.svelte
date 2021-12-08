@@ -1,7 +1,9 @@
 <script lang="ts">
+	import type { MovieListResult } from '$lib/model/movieListResult';
+
 	import MovieGenres from '$lib/components/MovieGenres.svelte';
 	import MovieRating from '$lib/components/MovieRating.svelte';
-	import type { MovieListResult } from '$lib/model/movieListResult';
+	import MoviePaginator from '$lib/components/MoviePaginator.svelte';
 
 	export let movies: Array<MovieListResult>;
 </script>
@@ -17,7 +19,9 @@
 				/>
 			</a>
 			<div class="movies-list__movie-details">
-				<h1 title={movie.title} class="movies-list__movie-title">{movie.title}</h1>
+				<a class="movies-list__movie-anchor" href="/movies/{movie.id}" sveltekit:prefetch>
+					<h1 title={movie.title} class="movies-list__movie-title">{movie.title}</h1>
+				</a>
 				<div class="movies-list__movie-genres-container">
 					<MovieGenres genres={movie.genre_ids} />
 				</div>
@@ -28,6 +32,9 @@
 		</article>
 	{/each}
 </section>
+<div class="paginator-container">
+	<MoviePaginator />
+</div>
 
 <style lang="postcss">
 	.movies-list {
@@ -59,7 +66,7 @@
 		}
 
 		&__movie-poster {
-			max-width: 200px;
+			max-width: 120px;
 			border-radius: clamp(0.75rem, 4vw - 0.25rem, 3rem);
 
 			@media screen and (min-width: 768px) {
@@ -83,6 +90,11 @@
 			margin-bottom: clamp(0.75rem, 2vw + 0.25rem, 1.5rem);
 		}
 
+		&__movie-anchor {
+			color: inherit;
+			text-decoration: none;
+		}
+
 		&__movie-rating-container {
 			margin-top: auto;
 		}
@@ -90,5 +102,10 @@
 		&__movie-genres-container {
 			margin-bottom: 2rem;
 		}
+	}
+
+	.paginator-container {
+		margin: clamp(1.5rem, 5vw + 0.5rem, 5rem) auto 0;
+		width: max-content;
 	}
 </style>
