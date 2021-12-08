@@ -3,7 +3,6 @@
 		const params = new URLSearchParams(page.params);
 		const { credits, details } = await (await fetch(`/api/movie?${params}`)).json();
 
-		console.log(credits, details);
 		return {
 			props: {
 				credits,

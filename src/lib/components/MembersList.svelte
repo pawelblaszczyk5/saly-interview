@@ -52,7 +52,6 @@
 			@media screen and (min-width: 1536px) {
 				width: calc(20% - 4 / 5 * clamp(0.5rem, 3vw - 0.25rem, 1rem));
 			}
-			/* TODO - TAKE GAP INTO ACCOUNT IN WIDTH */
 		}
 
 		&__member-photo {
