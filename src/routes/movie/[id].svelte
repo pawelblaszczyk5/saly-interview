@@ -14,14 +14,21 @@
 </script>
 
 <script lang="ts">
-	import MovieGenres from '$lib/components/MovieGenres.svelte';
-	import MovieRating from '$lib/components/MovieRating.svelte';
+	import type { MemberToDisplay } from '$lib/model/memberToDisplay';
 	import type { MovieCreditsResponse } from '$lib/model/movieCreditsResponse';
 	import type { MovieDetailsResponse } from '$lib/model/movieDetailsResponse';
 	import type { Load } from '@sveltejs/kit';
 
+	import MembersList from '$lib/components/MembersList.svelte';
+	import MovieGenres from '$lib/components/MovieGenres.svelte';
+	import MovieRating from '$lib/components/MovieRating.svelte';
+	import placeholderImage from '$lib/assets/placeholder-image.jpg';
+
 	export let credits: MovieCreditsResponse;
 	export let details: MovieDetailsResponse;
+
+	let castToDisplay: Array<MemberToDisplay>;
+	let crewToDisplay: Array<MemberToDisplay>;
 
 	const formatReleaseDate = (date: string) => {
 		const [year, month, day] = date.split('-');
@@ -31,13 +38,25 @@
 
 	$: movieRelaseYear = details.release_date.split('-')[0];
 	$: formattedReleaseDate = formatReleaseDate(details.release_date);
+	$: castToDisplay = credits.cast.map(({ profile_path, character, name }) => ({
+		name,
+		profile_path,
+		role: character,
+	}));
+	$: crewToDisplay = credits.crew.map(({ profile_path, job, name }) => ({
+		name,
+		profile_path,
+		role: job,
+	}));
 </script>
 
 <section class="movie">
 	<article class="movie__info">
 		<img
 			class="movie__poster"
-			src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/{details.poster_path}"
+			src={details.poster_path
+				? `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${details.poster_path}`
+				: placeholderImage}
 			alt={details.title}
 		/>
 		<div class="movie__details">
@@ -59,6 +78,18 @@
 			<div class="movie__rating-container">
 				<MovieRating count={details.vote_count} average={details.vote_average} />
 			</div>
+		</div>
+	</article>
+	<article class="movie__credits">
+		<h2 class="movie__credits-title">Wystąpili:</h2>
+		<div class="movie__members-list-container">
+			<MembersList members={castToDisplay} />
+		</div>
+	</article>
+	<article class="movie__credits">
+		<h2 class="movie__credits-title">Ekipa:</h2>
+		<div class="movie__members-list-container">
+			<MembersList members={crewToDisplay} />
 		</div>
 	</article>
 </section>
@@ -106,6 +137,14 @@
 
 		&__rating-container {
 			margin-top: auto;
+		}
+
+		&__credits-title {
+			font-size: clamp(1.5rem, 5vw - 0.25rem, 3rem);
+		}
+
+		&__members-list-container {
+			margin-top: clamp(1.5rem, 2vw + 1rem, 2.5rem);
 		}
 	}
 </style>

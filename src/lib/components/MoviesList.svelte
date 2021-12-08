@@ -4,6 +4,7 @@
 	import MovieGenres from '$lib/components/MovieGenres.svelte';
 	import MovieRating from '$lib/components/MovieRating.svelte';
 	import MoviePaginator from '$lib/components/MoviePaginator.svelte';
+	import placeholderImage from '$lib/assets/placeholder-image.jpg';
 
 	export let movies: Array<MovieListResult>;
 </script>
@@ -14,12 +15,14 @@
 			<a href="/movie/{movie.id}" sveltekit:prefetch>
 				<img
 					class="movies-list__movie-poster"
-					src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/{movie.poster_path}"
+					src={movie.poster_path
+						? `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`
+						: placeholderImage}
 					alt={movie.title}
 				/>
 			</a>
 			<div class="movies-list__movie-details">
-				<a class="movies-list__movie-anchor" href="/movies/{movie.id}" sveltekit:prefetch>
+				<a class="movies-list__movie-anchor" href="/movie/{movie.id}" sveltekit:prefetch>
 					<h1 title={movie.title} class="movies-list__movie-title">{movie.title}</h1>
 				</a>
 				<div class="movies-list__movie-genres-container">
