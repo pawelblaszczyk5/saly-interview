@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
 	export const load: Load = async ({ fetch, page }) => {
 		const params = new URLSearchParams(page.params);
-		const movies = await (await fetch(`/api/movies/list?${params}`)).json();
+		const movies = await (await fetch(`/api/movie/list?${params}`)).json();
 
 		return {
 			props: {
