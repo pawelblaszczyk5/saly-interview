@@ -19,7 +19,7 @@ export interface MovieDetailsResponse {
 		origin_country: string;
 	}>;
 	production_countries: Array<{ iso_3166_1: string; name: string }>;
-	relase_date: string;
+	release_date: string;
 	revenue: number;
 	runtime?: number;
 	spoken_languages: Array<{ iso_639_1: string; name: string }>;

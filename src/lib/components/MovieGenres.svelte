@@ -16,12 +16,13 @@
 	.movies-genres {
 		display: flex;
 		flex-wrap: wrap;
-		gap: clamp(0.25rem, 1vw, 0.5rem);
+		gap: clamp(0.25em, 1vw, 0.5em);
+		font-size: var(--genres-font-size, 16px);
 
 		&__genre {
 			display: inline-block;
-			font-size: clamp(0.75rem, 1vw + 0.5rem, 0.875rem);
-			padding: 0.25rem 0.5rem;
+			font-size: clamp(0.75em, 1vw + 0.5rem, 0.875em);
+			padding: 0.25em 0.5em;
 			color: var(--secondary-main-font);
 			background-color: var(--primary-accent-background);
 		}
