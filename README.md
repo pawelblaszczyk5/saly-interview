@@ -4,9 +4,7 @@ This task has been a part of the recruitment process for Saly. The app uses TheM
 
 ## Live version
 
-You can play it online right now [here](https://leaguessify.netlify.app/)!
-
-[![Leaguessify](readme-assets/screenshot.png 'Leaguessify screenshot')](https://leaguessify.netlify.app/)
+You can check it out online right now [here](https://stupefied-pare-658877.netlify.app/)!
 
 ## Running locally
 
