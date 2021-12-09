@@ -6,7 +6,7 @@ import { getParamsWithSessionId } from '$lib/helpers/getParamsWithSessionId';
 export const post: RequestHandler = async (request) => {
 	const params = getParamsWithSessionId(request);
 
-	await fetch(`${API_URL_PREFIX}list/${request.query.get('listId')}/add_item?${params}`, {
+	await fetch(`${API_URL_PREFIX}/list/${request.query.get('listId')}/add_item?${params}`, {
 		method: 'post',
 		headers: {
 			'Content-Type': 'application/json',

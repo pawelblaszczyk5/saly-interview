@@ -9,5 +9,5 @@ export const fetchMovies = async (page: number): Promise<MovieListResponse> => {
 	params.set('language', LANGUAGE);
 	params.set('page', page.toString());
 
-	return await (await fetch(`${API_URL_PREFIX}movie/popular?${params}`)).json();
+	return await (await fetch(`${API_URL_PREFIX}/movie/popular?${params}`)).json();
 };

@@ -10,8 +10,8 @@ export const get: RequestHandler = async (request) => {
 	params.set('language', LANGUAGE);
 
 	const [details, credits] = await Promise.all([
-		await (await fetch(`${API_URL_PREFIX}movie/${movieId}?${params}`)).json(),
-		await (await fetch(`${API_URL_PREFIX}movie/${movieId}/credits?${params}`)).json(),
+		await (await fetch(`${API_URL_PREFIX}/movie/${movieId}?${params}`)).json(),
+		await (await fetch(`${API_URL_PREFIX}/movie/${movieId}/credits?${params}`)).json(),
 	]);
 
 	return {

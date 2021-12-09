@@ -13,7 +13,7 @@ export const get: RequestHandler = async (request) => {
 	params.set('language', LANGUAGE);
 
 	const response: ListResponse = await (
-		await fetch(`${API_URL_PREFIX}list/${request.query.get('id')}?${params}`)
+		await fetch(`${API_URL_PREFIX}/list/${request.query.get('id')}?${params}`)
 	).json();
 
 	return {

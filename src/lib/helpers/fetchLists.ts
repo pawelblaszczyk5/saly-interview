@@ -10,6 +10,6 @@ export const fetchLists = async (request: ServerRequest, page = 1): Promise<User
 	params.set('page', page.toString());
 
 	return await (
-		await fetch(`${API_URL_PREFIX}account/${import.meta.env.VITE_TMDB_USER_ID}/lists?${params}`)
+		await fetch(`${API_URL_PREFIX}/account/${import.meta.env.VITE_TMDB_USER_ID}/lists?${params}`)
 	).json();
 };

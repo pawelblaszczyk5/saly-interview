@@ -15,7 +15,7 @@ export const get: RequestHandler = async (request) => {
 	params.set('language', LANGUAGE);
 
 	const { results: movies }: MovieListResponse = await (
-		await fetch(`${API_URL_PREFIX}search/movie?${params}`)
+		await fetch(`${API_URL_PREFIX}/search/movie?${params}`)
 	).json();
 
 	return {

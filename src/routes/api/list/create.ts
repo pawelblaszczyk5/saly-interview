@@ -15,7 +15,7 @@ export const post: RequestHandler<Record<string, unknown>, Omit<ListToDisplay, '
 	params.set('language', LANGUAGE);
 
 	const { list_id }: CreateListResponse = await (
-		await fetch(`${API_URL_PREFIX}list?${params}`, {
+		await fetch(`${API_URL_PREFIX}/list?${params}`, {
 			method: 'post',
 			headers: {
 				'Content-Type': 'application/json',
