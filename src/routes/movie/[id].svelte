@@ -1,4 +1,5 @@
 <script lang="ts" context="module">
+	export const hydrate = false;
 	export const load: Load = async ({ page, fetch }) => {
 		const params = new URLSearchParams(page.params);
 		const { credits, details } = await (await fetch(`/api/movie?${params}`)).json();

@@ -1,4 +1,5 @@
 <script lang="ts" context="module">
+	export const hydrate = false;
 	export const load: Load = async ({ fetch }) => {
 		const anyListCreated: boolean = await (await fetch('/api/list/exists')).json();
 
