@@ -5,14 +5,13 @@ import type { RequestHandler } from '@sveltejs/kit';
 
 export const get: RequestHandler = async (request) => {
 	const params = new URLSearchParams(PARAMS_WITH_API_KEY);
+	const movieId = request.query.get('id');
 
 	params.set('language', LANGUAGE);
 
 	const [details, credits] = await Promise.all([
-		await (await fetch(`${API_URL_PREFIX}movie/${request.query.get('id')}?${params}`)).json(),
-		await (
-			await fetch(`${API_URL_PREFIX}movie/${request.query.get('id')}/credits?${params}`)
-		).json(),
+		await (await fetch(`${API_URL_PREFIX}movie/${movieId}?${params}`)).json(),
+		await (await fetch(`${API_URL_PREFIX}movie/${movieId}/credits?${params}`)).json(),
 	]);
 
 	return {
