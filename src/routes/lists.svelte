@@ -15,9 +15,12 @@
 	import type { Load } from '@sveltejs/kit';
 
 	import AddListButton from '$lib/components/AddListButton.svelte';
+	import Meta from '$lib/components/Meta.svelte';
 
 	export let lists: Array<List>;
 </script>
+
+<Meta title="Twoje listy" />
 
 <div class="lists-heading">
 	<h1 class="lists-heading__title">Twoje listy ({lists.length})</h1>
