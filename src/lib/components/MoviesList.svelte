@@ -3,7 +3,6 @@
 
 	import MovieGenres from '$lib/components/MovieGenres.svelte';
 	import MovieRating from '$lib/components/MovieRating.svelte';
-	import MoviePaginator from '$lib/components/MoviePaginator.svelte';
 	import placeholderImage from '$lib/assets/placeholder-image.jpg';
 
 	export let movies: Array<MovieListResult>;
@@ -36,9 +35,6 @@
 		</article>
 	{/each}
 </section>
-<div class="paginator-container">
-	<MoviePaginator />
-</div>
 
 <style lang="postcss">
 	.movies-list {
@@ -106,11 +102,6 @@
 		&__movie-genres-container {
 			margin-bottom: 2rem;
 		}
-	}
-
-	.paginator-container {
-		margin: clamp(1.5rem, 5vw + 0.5rem, 5rem) auto 0;
-		width: max-content;
 	}
 
 	.heading {
