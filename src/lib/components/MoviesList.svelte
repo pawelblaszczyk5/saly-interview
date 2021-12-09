@@ -34,11 +34,13 @@
 					<a class="movies-list__movie-anchor" href="/movie/{movie.id}" sveltekit:prefetch>
 						<h1 title={movie.title} class="movies-list__movie-title">{movie.title}</h1>
 					</a>
-					{#if action === 'add'}
-						<PlusButton on:click={() => add(movie)} />
-					{:else if action === 'remove'}
-						<RemoveButton on:click={() => remove(movie.id)} />
-					{/if}
+					<div class="movies-list__movie-button-container">
+						{#if action === 'add'}
+							<PlusButton on:click={() => add(movie)} />
+						{:else if action === 'remove'}
+							<RemoveButton on:click={() => remove(movie.id)} />
+						{/if}
+					</div>
 				</div>
 				<div class="movies-list__movie-genres-container">
 					<MovieGenres genres={movie.genre_ids} />
@@ -101,7 +103,12 @@
 			display: flex;
 			flex-direction: column;
 			height: 100%;
+			width: 100%;
 			overflow: hidden;
+		}
+
+		&__movie-button-container {
+			margin-bottom: clamp(0.75rem, 2vw + 0.25rem, 1.5rem);
 		}
 
 		&__movie-title {
@@ -117,6 +124,7 @@
 		&__movie-anchor {
 			color: inherit;
 			text-decoration: none;
+			width: calc(100% - 40px);
 		}
 
 		&__movie-rating-container {

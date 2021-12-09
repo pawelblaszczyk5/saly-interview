@@ -20,12 +20,14 @@
 	import AddButton from '$lib/components/AddButton.svelte';
 	import MoviesList from '$lib/components/MoviesList.svelte';
 	import Meta from '$lib/components/Meta.svelte';
+	import SearchModal from '$lib/components/SearchModal.svelte';
 
 	export let list: ListResponse;
 
-	const turnOnSearch = () => {
-		console.log('will search');
-	};
+	let isSearchModalOpen = false;
+
+	const turnOnSearch = () => (isSearchModalOpen = true);
+	const turnOffSearch = () => (isSearchModalOpen = false);
 
 	const remove = async ({ detail: id }: CustomEvent<number>) => {
 		const params = new URLSearchParams({ movieId: id.toString(), listId: list.id });
@@ -46,7 +48,7 @@
 
 <Meta title="Twoja lista - {list.name}" description={list.description} />
 
-<div class="list-heading">
+<section class="list-heading">
 	<h1 class="list-heading__title">
 		{list.name}
 		<div class="list-heading__button-container--desktop">
@@ -54,19 +56,23 @@
 		</div>
 	</h1>
 	<h2 class="list-heading__description">{list.description}</h2>
-</div>
+</section>
 
 <section class="list">
 	{#if list.items.length}
 		<MoviesList action="remove" movies={list.items} on:remove={remove} />
 	{:else}
-		<p>Nie masz jeszcze filmów na tej liście, dodaj</p>
+		<p class="list__disclaimer">Nie masz jeszcze filmów na tej liście, dodaj swój pierwszy</p>
 	{/if}
 </section>
 
 <div class="list-heading__button-container--mobile">
 	<AddButton on:click={turnOnSearch}><svelte:fragment>Dodaj film</svelte:fragment></AddButton>
 </div>
+
+{#if isSearchModalOpen}
+	<SearchModal addMovie={add} close={turnOffSearch} />
+{/if}
 
 <style lang="postcss">
 	.list-heading {
@@ -100,6 +106,14 @@
 					display: initial;
 				}
 			}
+		}
+	}
+
+	.list {
+		&__disclaimer {
+			text-align: center;
+			color: var(--primary-accent-font);
+			font-size: clamp(1rem, 1vw + 0.75rem, 1.5rem);
 		}
 	}
 </style>
