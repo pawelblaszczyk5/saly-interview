@@ -45,7 +45,7 @@
 	const removeList = async ({ detail: id }: CustomEvent<number>) => {
 		const params = new URLSearchParams({ id: id.toString() });
 
-		await fetch(`/api/list/delete?${params}`, { method: 'delete' });
+		await fetch(`/api/list/remove?${params}`, { method: 'delete' });
 		listsToDisplay = listsToDisplay.filter(({ id: idToRemove }) => id !== idToRemove);
 	};
 

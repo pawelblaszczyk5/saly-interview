@@ -29,8 +29,8 @@
 		</div>
 	{:else}
 		<form class="list__form" on:submit|preventDefault={add}>
-			<input class="list__title" bind:value={list.name} />
-			<textarea class="list__description-textarea" bind:value={list.description} />
+			<input class="list__title" bind:value={list.name} required />
+			<input class="list__description-input" bind:value={list.description} required />
 			<button class="list__button list__button--add" type="submit" aria-label="Dodaj">
 				<Add />
 			</button>
@@ -94,10 +94,9 @@
 			border: 1px solid var(--primary-accent-background);
 		}
 
-		&__description-textarea {
-			resize: none;
+		&__description-input {
 			width: 100%;
-			height: calc(clamp(1rem, 5vw - 0.75rem, 1.5rem) * 1.15 * 6);
+			padding: 0.25rem 0.5rem;
 			border: 1px solid var(--primary-accent-background);
 			font-size: clamp(1rem, 5vw - 0.75rem, 1.5rem);
 			line-height: 1.15;

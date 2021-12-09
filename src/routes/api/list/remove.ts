@@ -1,6 +1,7 @@
+import type { RequestHandler } from '@sveltejs/kit';
+
 import { API_URL_PREFIX } from '$lib/constants/apiUrlPrefix';
 import { getParamsWithSessionId } from '$lib/helpers/getParamsWithSessionId';
-import type { RequestHandler } from '@sveltejs/kit';
 
 export const del: RequestHandler = async (request) => {
 	const params = getParamsWithSessionId(request);
