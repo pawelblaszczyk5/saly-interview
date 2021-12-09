@@ -74,6 +74,7 @@
 			box-shadow: var(--primary-box-shadow);
 			gap: clamp(0.5rem, 3vw - 0.5rem, 1.5rem);
 			display: flex;
+			overflow: hidden;
 
 			@media screen and (min-width: 768px) {
 				flex-direction: column;
@@ -93,12 +94,14 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: stretch;
+			max-width: 100%;
 		}
 
 		&__movie-details {
 			display: flex;
 			flex-direction: column;
 			height: 100%;
+			overflow: hidden;
 		}
 
 		&__movie-title {
