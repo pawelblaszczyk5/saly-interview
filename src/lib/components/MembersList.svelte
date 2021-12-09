@@ -37,7 +37,7 @@
 			gap: clamp(0.5rem, 2vw - 0.25rem, 0.75rem);
 			width: calc(50% - 1 / 2 * clamp(0.5rem, 3vw - 0.25rem, 1rem));
 			flex-shrink: 0;
-			box-shadow: var(--secondary-box-shadow);
+			box-shadow: var(--primary-box-shadow);
 			padding: 0.5rem clamp(0.5rem, 5vw - 0.75rem, 2.188rem);
 			text-align: center;
 
