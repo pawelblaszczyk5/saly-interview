@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
 	export const load: Load = async ({ fetch }) => {
-		const anyListCreated: boolean = await (await fetch('/api/lists/exists')).json();
+		const anyListCreated: boolean = await (await fetch('/api/list/exists')).json();
 
 		return {
 			props: {
@@ -62,6 +62,7 @@
 		align-items: center;
 		position: sticky;
 		top: 0;
+		z-index: 1;
 
 		&__logo {
 			display: flex;
