@@ -15,6 +15,8 @@
 </script>
 
 <script lang="ts">
+	import type { MovieListResult } from '$lib/model/movieListResult';
+
 	import AddButton from '$lib/components/AddButton.svelte';
 	import MoviesList from '$lib/components/MoviesList.svelte';
 	import Meta from '$lib/components/Meta.svelte';
@@ -23,6 +25,22 @@
 
 	const turnOnSearch = () => {
 		console.log('will search');
+	};
+
+	const remove = async ({ detail: id }: CustomEvent<number>) => {
+		const params = new URLSearchParams({ movieId: id.toString(), listId: list.id });
+
+		await fetch(`/api/list/removeMovie?${params}`, { method: 'post' });
+
+		list.items = list.items.filter(({ id: idToRemove }) => idToRemove !== id);
+	};
+
+	const add = async ({ detail: movie }: CustomEvent<MovieListResult>) => {
+		const params = new URLSearchParams({ movieId: movie.id.toString(), listId: list.id });
+
+		await fetch(`/api/list/addMovie?${params}`, { method: 'post' });
+
+		list.items = [...list.items, movie];
 	};
 </script>
 
@@ -40,7 +58,7 @@
 
 <section class="list">
 	{#if list.items.length}
-		<MoviesList movies={list.items} />
+		<MoviesList action="remove" movies={list.items} on:remove={remove} />
 	{:else}
 		<p>Nie masz jeszcze filmów na tej liście, dodaj</p>
 	{/if}

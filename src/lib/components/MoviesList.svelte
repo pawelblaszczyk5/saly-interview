@@ -4,8 +4,17 @@
 	import MovieGenres from '$lib/components/MovieGenres.svelte';
 	import MovieRating from '$lib/components/MovieRating.svelte';
 	import placeholderImage from '$lib/assets/placeholder-image.jpg';
+	import { createEventDispatcher } from 'svelte';
+	import PlusButton from '$lib/components/PlusButton.svelte';
+	import RemoveButton from '$lib/components/RemoveButton.svelte';
 
 	export let movies: Array<MovieListResult>;
+	export let action: 'remove' | 'add' | undefined = undefined;
+
+	const dispatch = createEventDispatcher<{ remove: number; add: MovieListResult }>();
+
+	const add = (movie: MovieListResult) => dispatch('add', movie);
+	const remove = (id: number) => dispatch('remove', id);
 </script>
 
 <section class="movies-list">
@@ -21,9 +30,16 @@
 				/>
 			</a>
 			<div class="movies-list__movie-details">
-				<a class="movies-list__movie-anchor" href="/movie/{movie.id}" sveltekit:prefetch>
-					<h1 title={movie.title} class="movies-list__movie-title">{movie.title}</h1>
-				</a>
+				<div class="movies-list__movie-title-container">
+					<a class="movies-list__movie-anchor" href="/movie/{movie.id}" sveltekit:prefetch>
+						<h1 title={movie.title} class="movies-list__movie-title">{movie.title}</h1>
+					</a>
+					{#if action === 'add'}
+						<PlusButton on:click={() => add(movie)} />
+					{:else if action === 'remove'}
+						<RemoveButton on:click={() => remove(movie.id)} />
+					{/if}
+				</div>
 				<div class="movies-list__movie-genres-container">
 					<MovieGenres genres={movie.genre_ids} />
 				</div>
@@ -71,6 +87,12 @@
 			@media screen and (min-width: 768px) {
 				max-width: 100%;
 			}
+		}
+
+		&__movie-title-container {
+			display: flex;
+			justify-content: space-between;
+			align-items: stretch;
 		}
 
 		&__movie-details {
