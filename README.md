@@ -22,4 +22,4 @@ Feel free to open issue or create pull requests. I am always open for any feedba
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[GPL-3.0 License](https://choosealicense.com/licenses/gpl-3.0/)
