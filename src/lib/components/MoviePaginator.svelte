@@ -57,7 +57,6 @@
 		&__anchor {
 			display: flex;
 			align-items: center;
-			gap: 0.5rem;
 			color: var(--secondary-main-font);
 			text-decoration: none;
 			padding: 0.5rem 1rem;
@@ -65,6 +64,7 @@
 
 			@media screen and (min-width: 768px) {
 				font-size: inherit;
+				gap: 0.5rem;
 			}
 
 			&--back {
