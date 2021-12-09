@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
 	export const load: Load = async ({ fetch }) => {
-		const { result } = await (await fetch('/api/list')).json();
+		const { result } = await (await fetch('/api/lists')).json();
 
 		return {
 			props: {
