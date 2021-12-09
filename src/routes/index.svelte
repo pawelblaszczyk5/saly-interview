@@ -23,6 +23,7 @@
 
 <Meta />
 
+<h1 class="heading">Wszystkie filmy</h1>
 <MoviesList movies={movies.results} />
 <div class="paginator-container">
 	<MoviePaginator />
@@ -32,5 +33,10 @@
 	.paginator-container {
 		margin: clamp(1.5rem, 5vw + 0.5rem, 5rem) auto 0;
 		width: max-content;
+	}
+
+	.heading {
+		margin-bottom: clamp(1rem, 5vw + 0.25rem, 3.875rem);
+		font-size: clamp(2rem, 3vw + 1rem, 2.5rem);
 	}
 </style>

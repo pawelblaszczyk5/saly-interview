@@ -15,7 +15,7 @@
 	import type { Load } from '@sveltejs/kit';
 	import type { ListToDisplay } from '$lib/model/listToDisplay';
 
-	import AddListButton from '$lib/components/AddListButton.svelte';
+	import AddButton from '$lib/components/AddButton.svelte';
 	import Meta from '$lib/components/Meta.svelte';
 	import List from '$lib/components/List.svelte';
 	import { tick } from 'svelte';
@@ -79,7 +79,7 @@
 		Twoje listy ({listsToDisplay.filter(({ id }) => typeof id === 'number').length})
 	</h1>
 	<div class="lists-heading__button-container--desktop">
-		<AddListButton on:click={addList} />
+		<AddButton on:click={addList}><svelte:fragment>Utwórz własną listę</svelte:fragment></AddButton>
 	</div>
 </div>
 
@@ -92,7 +92,7 @@
 </section>
 
 <div class="lists-heading__button-container--mobile">
-	<AddListButton on:click={addList} />
+	<AddButton on:click={addList}><svelte:fragment>Utwórz własną listę</svelte:fragment></AddButton>
 </div>
 
 <style lang="postcss">

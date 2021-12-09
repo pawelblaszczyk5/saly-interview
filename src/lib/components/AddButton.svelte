@@ -3,7 +3,8 @@
 </script>
 
 <button class="add-list-button" on:click>
-	<span class="add-list-button__icon-container"><Add /></span> Utwórz własną listę
+	<span class="add-list-button__icon-container"><Add /></span>
+	<slot />
 </button>
 
 <style lang="postcss">

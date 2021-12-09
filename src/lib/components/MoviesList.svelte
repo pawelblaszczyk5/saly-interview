@@ -8,7 +8,6 @@
 	export let movies: Array<MovieListResult>;
 </script>
 
-<h1 class="heading">Wszystkie filmy</h1>
 <section class="movies-list">
 	{#each movies as movie (movie.id)}
 		<article class="movies-list__movie">
@@ -102,10 +101,5 @@
 		&__movie-genres-container {
 			margin-bottom: 2rem;
 		}
-	}
-
-	.heading {
-		margin-bottom: clamp(1rem, 5vw + 0.25rem, 3.875rem);
-		font-size: clamp(2rem, 3vw + 1rem, 2.5rem);
 	}
 </style>
