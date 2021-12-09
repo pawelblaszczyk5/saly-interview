@@ -17,7 +17,7 @@
 	</a>
 	<a
 		class="paginator__anchor paginator__anchor--back"
-		href="/movies/{currentPage - 1}"
+		href="/movies/{Math.max(currentPage - 1, MIN_PAGE)}"
 		sveltekit:prefetch
 		><span class="paginator__anchor-symbol paginator__anchor-symbol--back">&#10094;</span> Poprzednia</a
 	>
@@ -27,7 +27,7 @@
 	</p>
 	<a
 		class="paginator__anchor paginator__anchor--forward"
-		href="/movies/{currentPage + 1}"
+		href="/movies/{Math.min(currentPage + 1, MAX_PAGE)}"
 		sveltekit:prefetch
 		>Następna <span class="paginator__anchor-symbol paginator__anchor-symbol--forward"
 			>&#10095;</span
