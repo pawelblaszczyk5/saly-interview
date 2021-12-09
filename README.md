@@ -1,38 +1,27 @@
-# create-svelte
+# Saly-interview task
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
+This task has been a part of the recruitment process for Saly. The app uses TheMovieDB API to show movies, create and manage movies lists. The website connects with a single TheMovieDB account.
 
-## Creating a project
+## Live version
 
-If you're seeing this, you've probably already done this step. Congrats!
+You can play it online right now [here](https://leaguessify.netlify.app/)!
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
+[![Leaguessify](readme-assets/screenshot.png 'Leaguessify screenshot')](https://leaguessify.netlify.app/)
 
-# create a new project in my-app
-npm init svelte@next my-app
-```
+## Running locally
 
-> Note: the `@next` is temporary
+To run it locally, you firstly need to obtain a Riot API key and Redis server. Then follow these steps:
 
-## Developing
+- Clone the repository
+- Make sure Node and NPM are installed
+- Run `npm ci`
+- Create `.env` file according to interface in `src/env.d.ts` and example file in `env.example`
+- Run `npm dev`
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Contributing
 
-```bash
-npm run dev
+Feel free to open issue or create pull requests. I am always open for any feedback, thanks in advance.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+## License
 
-## Building
-
-Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment. Then:
-
-```bash
-npm run build
-```
-
-> You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
+[MIT](https://choosealicense.com/licenses/mit/)
