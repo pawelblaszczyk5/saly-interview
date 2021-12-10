@@ -8,7 +8,7 @@ You can check it out online right now [here](https://stupefied-pare-658877.netli
 
 ## Running locally
 
-To run it locally, you firstly need to obtain a Riot API key and Redis server. Then follow these steps:
+To run it locally, you firstly need to obtain a TheMovieDB account. Then follow these steps:
 
 - Clone the repository
 - Make sure Node and NPM are installed
